@@ -1,0 +1,53 @@
+# Objetos compilados
+*.o
+*.obj
+*.lo
+*.slo
+
+# Ejecutables y bibliotecas
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+
+# Directorios de construcción
+build/
+Build/
+CMakeFiles/
+CMakeCache.txt
+
+# Temporales y logs
+*.tmp
+*.log
+*.bak
+*.swp
+
+# Directorio de caché de VS (puede crecer a cientos de MB)
+.vs/
+
+# Salida de compilación (MSBuild)
+x64/
+x86/
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# Archivos de usuario (específicos de tu máquina)
+*.suo
+*.user
+*.sln.docstates
+
+# Caché de IntelliSense / compilación incremental
+ipch/
+*.ipdb
+*.iobj
+*.pch
+*.aps
+*.ncb
+*.sdf
+*.cachefile 
