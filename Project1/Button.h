@@ -3,27 +3,31 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <iostream>
 
 class Button
 {
 public:
-    Button(const std::string& pImageURL, sf::Vector2f pCoordinates);
+    Button(
+        const std::string& pNormalImageURL,
+        const std::string& pHoverImageURL,
+        sf::Vector2f pCoordinates
+    );
 
-    bool onClick(sf::RenderWindow& pWindow);
-    bool isOver(sf::RenderWindow& pWindow);
+    bool isOver(sf::Vector2f pMousePosition) const;
 
-    std::string getImageURL() const;
-    void setImageURL(const std::string& pImageURL);
+    void update(const sf::RenderWindow& pWindow);
 
     void setCoordinates(sf::Vector2f pCoordinates);
     void setScale(sf::Vector2f pScale);
 
-    void draw(sf::RenderWindow& pWindow);
+    void draw(sf::RenderWindow& pWindow) const;
 
 private:
-    sf::Texture buttonTexture;
+    sf::Texture normalTexture;
+    sf::Texture hoverTexture;
+
     sf::Sprite buttonSprite;
-    std::string imageURL;
 };
 
 #endif
