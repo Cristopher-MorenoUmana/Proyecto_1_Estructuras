@@ -17,4 +17,5 @@ public:
 
     std::optional<BlockColor> getCell(int col) const;
     void setCell(int col, BlockColor color);
+    void setCell(int col, std::optional<BlockColor> color);
 };

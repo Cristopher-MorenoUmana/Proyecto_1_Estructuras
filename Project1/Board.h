@@ -1,9 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <array>
+#include <optional>
 #include "Row.h"
 #include "Piece.h"
 #include "TextureManager.h"
 
+// Nodo para la lista enlazada de filas (NodoFila en el diagrama)
 struct RowNode {
     Row row;
     RowNode* next = nullptr;
@@ -22,16 +25,19 @@ public:
     Board(int numRows = 20);
     ~Board();
 
-    // Deshabilitar copia por asignación para evitar punteros colgantes
+    // Deshabilitar copia por asignación para prevenir punteros colgantes y heap corruption
     Board(const Board&) = delete;
     Board& operator=(const Board&) = delete;
 
-    // Método seguro para limpiar el tablero al perder
     void reset();
 
     bool isPositionValid(const Piece& piece) const;
     void lockPiece(const Piece& piece);
     int clearFullLines();
+
+    // Métodos para capturar y restaurar la matriz (Requeridos por MovementList)
+    std::array<std::array<std::optional<BlockColor>, 10>, 20> getGrid() const;
+    void setGrid(const std::array<std::array<std::optional<BlockColor>, 10>, 20>& grid);
 
     void draw(sf::RenderWindow& window, const TextureManager& textureManager, sf::Vector2f boardOffset, float tileSize) const;
 };

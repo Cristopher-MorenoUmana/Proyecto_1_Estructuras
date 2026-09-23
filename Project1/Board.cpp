@@ -120,6 +120,32 @@ int Board::clearFullLines() {
     return linesCleared;
 }
 
+std::array<std::array<std::optional<BlockColor>, 10>, 20> Board::getGrid() const {
+    std::array<std::array<std::optional<BlockColor>, 10>, 20> grid;
+    RowNode* current = head;
+    int r = 0;
+    while (current && r < rowCount) {
+        for (int c = 0; c < 10; ++c) {
+            grid[r][c] = current->row.getCell(c);
+        }
+        current = current->next;
+        r++;
+    }
+    return grid;
+}
+
+void Board::setGrid(const std::array<std::array<std::optional<BlockColor>, 10>, 20>& grid) {
+    RowNode* current = head;
+    int r = 0;
+    while (current && r < rowCount) {
+        for (int c = 0; c < 10; ++c) {
+            current->row.setCell(c, grid[r][c]);
+        }
+        current = current->next;
+        r++;
+    }
+}
+
 void Board::draw(sf::RenderWindow& window, const TextureManager& textureManager, sf::Vector2f boardOffset, float tileSize) const {
     // 1. Dibujar fondo del tablero con marco
     sf::RectangleShape background(sf::Vector2f(10.f * tileSize, rowCount * tileSize));

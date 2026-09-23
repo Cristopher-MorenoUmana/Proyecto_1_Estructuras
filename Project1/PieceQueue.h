@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <vector>
 #include "Piece.h"
 #include "TextureManager.h"
 
@@ -29,7 +30,10 @@ public:
     Piece dequeue();
     bool isEmpty() const;
     int getCount() const { return count; }
+    void clear(); // Vacía la cola de forma segura sin generar nuevas bolsas
 
-    // Se agrega el parámetro font para renderizar el título de la vista previa
+    std::vector<Piece> getQueueState() const;
+    void setQueueState(const std::vector<Piece>& pieces);
+
     void drawNext(sf::RenderWindow& window, const TextureManager& textureManager, const sf::Font& font, sf::Vector2f position, float tileSize, int amount = 3) const;
 };

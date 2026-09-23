@@ -149,7 +149,9 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HoldStack.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MovementList.cpp" />
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="PieceQueue.cpp" />
     <ClCompile Include="Row.cpp" />
@@ -161,6 +163,11 @@
     <ClInclude Include="Board.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameSnapshot.h" />
+    <ClInclude Include="HoldStack.h" />
+    <ClInclude Include="MovementList.h" />
+    <ClInclude Include="MovementNode.h" />
+    <ClInclude Include="MovementType.h" />
     <ClInclude Include="Piece.h" />
     <ClInclude Include="PieceQueue.h" />
     <ClInclude Include="PieceType.h" />

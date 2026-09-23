@@ -37,3 +37,9 @@ void Row::setCell(int col, BlockColor color) {
         cells[col] = color;
     }
 }
+
+void Row::setCell(int col, std::optional<BlockColor> color) {
+    if (col >= 0 && col < 10) {
+        cells[col] = color;
+    }
+}

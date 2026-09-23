@@ -10,9 +10,17 @@ PieceQueue::PieceQueue() : front(nullptr), back(nullptr), count(0) {
 }
 
 PieceQueue::~PieceQueue() {
-    while (!isEmpty()) {
-        dequeue();
+    clear();
+}
+
+void PieceQueue::clear() {
+    while (front != nullptr) {
+        PieceNode* temp = front;
+        front = front->next;
+        delete temp;
     }
+    back = nullptr;
+    count = 0;
 }
 
 void PieceQueue::enqueue(const Piece& piece) {
@@ -69,15 +77,30 @@ void PieceQueue::generateBag() {
     }
 }
 
+std::vector<Piece> PieceQueue::getQueueState() const {
+    std::vector<Piece> pieces;
+    PieceNode* current = front;
+    while (current) {
+        pieces.push_back(current->piece);
+        current = current->next;
+    }
+    return pieces;
+}
+
+void PieceQueue::setQueueState(const std::vector<Piece>& pieces) {
+    clear(); // Liberar nodos de la memoria directamente sin llamar a dequeue()
+    for (const auto& piece : pieces) {
+        enqueue(piece);
+    }
+}
+
 void PieceQueue::drawNext(sf::RenderWindow& window, const TextureManager& textureManager, const sf::Font& font, sf::Vector2f position, float tileSize, int amount) const {
-    // 1. Dibujar el texto del título del panel
     sf::Text titleText(font, "SIGUIENTE", 18);
     titleText.setFillColor(sf::Color::White);
     titleText.setStyle(sf::Text::Bold);
     titleText.setPosition({ position.x + 10.f, position.y - 28.f });
     window.draw(titleText);
 
-    // 2. Dibujar el marco contenedor lateral
     float boxWidth = 5.5f * tileSize;
     float boxHeight = (amount * 3.2f + 0.5f) * tileSize;
 
@@ -88,13 +111,11 @@ void PieceQueue::drawNext(sf::RenderWindow& window, const TextureManager& textur
     previewBox.setOutlineColor(sf::Color(200, 200, 200));
     window.draw(previewBox);
 
-    // 3. Línea divisoria bajo la primera pieza (la más importante)
     sf::RectangleShape divider(sf::Vector2f(boxWidth - 20.f, 2.f));
     divider.setPosition({ position.x + 10.f, position.y + (3.3f * tileSize) });
     divider.setFillColor(sf::Color(100, 100, 120, 180));
     window.draw(divider);
 
-    // 4. Dibujar las piezas en la cola
     PieceNode* current = front;
     int drawn = 0;
 
@@ -106,7 +127,6 @@ void PieceQueue::drawNext(sf::RenderWindow& window, const TextureManager& textur
             position.y + (0.5f * tileSize) + (drawn * 3.2f * tileSize)
         };
 
-        // Renderizar la pieza con escala normal para la primera, y ligeramente reducida para las subsecuentes
         float currentTileScale = (drawn == 0) ? (tileSize * 0.85f) : (tileSize * 0.70f);
         previewPiece.draw(window, textureManager, pieceOffset, currentTileScale);
 
