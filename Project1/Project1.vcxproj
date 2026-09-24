@@ -155,6 +155,9 @@
     <ClCompile Include="Piece.cpp" />
     <ClCompile Include="PieceQueue.cpp" />
     <ClCompile Include="Row.cpp" />
+    <ClCompile Include="ScoreTable.cpp" />
+    <ClCompile Include="Sorter.cpp" />
+    <ClCompile Include="TextField.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +176,10 @@
     <ClInclude Include="PieceType.h" />
     <ClInclude Include="Row.h" />
     <ClInclude Include="RowNode.h" />
+    <ClInclude Include="ScoreRecord.h" />
+    <ClInclude Include="ScoreTable.h" />
+    <ClInclude Include="Sorter.h" />
+    <ClInclude Include="TextField.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

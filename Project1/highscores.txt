@@ -1,0 +1,8 @@
+Jugador1 3000
+Johnny 1300
+Albertano 1300
+Cristopher 900
+Pepe 800
+Jugador1 500
+Juan 200
+Yo 100
