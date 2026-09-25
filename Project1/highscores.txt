@@ -1,8 +1,13 @@
+Pepe 8000
+Alfonso 5000
+Jugador1 4100
+Jugador1 3100
 Jugador1 3000
+Juan 2000
+Jugador1 1600
+Jugador1 1400
 Johnny 1300
+Jugador1 1300
 Albertano 1300
+Pedro 1000
 Cristopher 900
-Pepe 800
-Jugador1 500
-Juan 200
-Yo 100

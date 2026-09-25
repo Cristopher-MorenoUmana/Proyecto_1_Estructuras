@@ -20,7 +20,6 @@ private:
 public:
     Piece(PieceType pType, int pRow = 0, int pColumn = 3);
 
-    // Métodos del diagrama de clases
     void rotate();
     void move(int dRow, int dCol);
     std::array<sf::Vector2i, 4> getCoordinates() const;
@@ -28,7 +27,6 @@ public:
     // Dibuja la pieza compuesta por 4 bloques
     void draw(sf::RenderWindow& window, const TextureManager& textureManager, sf::Vector2f boardOffset, float tileSize) const;
 
-    // Getters
     PieceType getType() const { return type; }
     BlockColor getColor() const { return color; }
     int getRow() const { return originRow; }

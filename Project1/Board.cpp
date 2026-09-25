@@ -59,7 +59,7 @@ bool Board::isPositionValid(const Piece& piece) const {
 
         if (row >= 0) {
             RowNode* node = getNodeAt(row);
-            if (node && node->row.getCell(col).has_value()) {
+			if (node && node->row.getCell(col).has_value()) { // Si la celda está ocupada
                 return false;
             }
         }
@@ -75,12 +75,39 @@ void Board::lockPiece(const Piece& piece) {
         int row = pos.x;
         int col = pos.y;
 
-        if (row >= 0 && row < rowCount && col >= 0 && col < 10) {
+		if (row >= 0 && row < rowCount && col >= 0 && col < 10) { // Si la posición está dentro de los límites del tablero
             RowNode* node = getNodeAt(row);
             if (node) {
                 node->row.setCell(col, color);
             }
         }
+    }
+}
+
+void Board::clearBottomRow() {
+    if (!tail) return;
+
+    RowNode* oldTail = tail;
+    if (tail == head) {
+        head = nullptr;
+        tail = nullptr;
+    }
+    else {
+        tail = tail->prev;
+        tail->next = nullptr;
+    }
+    delete oldTail;
+
+    // Insertar un nuevo nodo de fila vacia al inicio (head)
+    RowNode* newHead = new RowNode();
+    if (!head) {
+        head = newHead;
+        tail = newHead;
+    }
+    else {
+        newHead->next = head;
+        head->prev = newHead;
+        head = newHead;
     }
 }
 
@@ -120,7 +147,7 @@ int Board::clearFullLines() {
     return linesCleared;
 }
 
-std::array<std::array<std::optional<BlockColor>, 10>, 20> Board::getGrid() const {
+std::array<std::array<std::optional<BlockColor>, 10>, 20> Board::getGrid() const { // Devuelve la matriz de celdas ocupadas del tablero
     std::array<std::array<std::optional<BlockColor>, 10>, 20> grid;
     RowNode* current = head;
     int r = 0;

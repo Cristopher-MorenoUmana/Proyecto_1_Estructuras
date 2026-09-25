@@ -23,12 +23,12 @@ public:
     PieceQueue();
     ~PieceQueue();
 
-    PieceQueue(const PieceQueue&) = delete;
+    PieceQueue(const PieceQueue&) = delete; 
     PieceQueue& operator=(const PieceQueue&) = delete;
 
-    void enqueue(const Piece& piece);
-    Piece dequeue();
-    bool isEmpty() const;
+    void enqueue(const Piece& piece); // Push
+	Piece dequeue(); // Pop
+    bool isEmpty() const; // vacia
     int getCount() const { return count; }
     void clear(); // Vacía la cola de forma segura sin generar nuevas bolsas
 

@@ -1,7 +1,7 @@
 #include "Piece.h"
 
 // Desplazamientos relativos (fila, columna) para cada tipo de pieza
-static const sf::Vector2i PIECE_SHAPES[7][4][4] = {
+static const sf::Vector2i PIECE_SHAPES[7][4][4] = { //[7] Piezas, [4] Orientaciones, [4] Bloques
     // PieceType::I
     {
         {{1,0}, {1,1}, {1,2}, {1,3}},
@@ -112,7 +112,7 @@ void Piece::draw(sf::RenderWindow& window, const TextureManager& textureManager,
 
         block.setScale({ scaleX, scaleY });
 
-        // La posición en la grilla avanza a pasos de tileSize.
+        // La posición en la cuadrícula avanza a pasos de tileSize.
         // Al medir la textura 19x16, el píxel 19 (en X) y el píxel 16 (en Y) 
         // caen exactamente sobre el primer píxel del bloque adyacente.
         float posX = boardOffset.x + (pos.y * tileSize);

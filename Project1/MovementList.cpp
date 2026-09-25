@@ -15,7 +15,7 @@ void MovementList::clear() {
     count = 0;
 }
 
-void MovementList::deleteSubtree(MovementNode* node) {
+void MovementList::deleteSubtree(MovementNode* node) { // Vaciar lista apartir de un nodo dado
     while (node) {
         MovementNode* nextNode = node->next;
         delete node;
@@ -25,7 +25,7 @@ void MovementList::deleteSubtree(MovementNode* node) {
 
 void MovementList::record(const GameSnapshot& snapshot, MovementType type) {
 
-    if (current && current->next) {
+	if (current && current->next) { // Si hay movimientos futuros, eliminarlos
         deleteSubtree(current->next);
         current->next = nullptr;
         tail = current;

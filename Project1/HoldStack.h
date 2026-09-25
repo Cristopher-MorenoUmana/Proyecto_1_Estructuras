@@ -4,7 +4,6 @@
 #include "Piece.h"
 #include "TextureManager.h"
 
-// Nodo dinámico propio para la pila Hold (NodoHold en el diagrama)
 struct HoldNode {
     Piece piece;
     HoldNode* next;
@@ -15,7 +14,7 @@ struct HoldNode {
 class HoldStack {
 private:
     HoldNode* top;
-    int capacity; // Capacidad máxima estricta (1 elemento según el enunciado)
+    int capacity; // Capacidad máxima estricta
     int count;
 
 public:

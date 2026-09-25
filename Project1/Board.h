@@ -6,7 +6,7 @@
 #include "Piece.h"
 #include "TextureManager.h"
 
-// Nodo para la lista enlazada de filas (NodoFila en el diagrama)
+// Nodo para la lista enlazada de filas
 struct RowNode {
     Row row;
     RowNode* next = nullptr;
@@ -38,6 +38,8 @@ public:
     // Métodos para capturar y restaurar la matriz (Requeridos por MovementList)
     std::array<std::array<std::optional<BlockColor>, 10>, 20> getGrid() const;
     void setGrid(const std::array<std::array<std::optional<BlockColor>, 10>, 20>& grid);
+
+    void clearBottomRow(); // Elimina la ultima fila (tail) y agrega una vacia arriba (head)
 
     void draw(sf::RenderWindow& window, const TextureManager& textureManager, sf::Vector2f boardOffset, float tileSize) const;
 };

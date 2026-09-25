@@ -1,6 +1,5 @@
 #include "PieceQueue.h"
 #include <array>
-#include <algorithm>
 #include <random>
 #include <chrono>
 

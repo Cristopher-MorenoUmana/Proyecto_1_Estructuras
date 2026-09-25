@@ -148,6 +148,7 @@
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="EventQueue.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="HoldStack.cpp" />
     <ClCompile Include="main.cpp" />
@@ -165,6 +166,8 @@
     <ClInclude Include="BlockColor.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Event.h" />
+    <ClInclude Include="EventQueue.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameSnapshot.h" />
     <ClInclude Include="HoldStack.h" />
@@ -175,7 +178,6 @@
     <ClInclude Include="PieceQueue.h" />
     <ClInclude Include="PieceType.h" />
     <ClInclude Include="Row.h" />
-    <ClInclude Include="RowNode.h" />
     <ClInclude Include="ScoreRecord.h" />
     <ClInclude Include="ScoreTable.h" />
     <ClInclude Include="Sorter.h" />

@@ -9,6 +9,7 @@
 #include "HoldStack.h"
 #include "MovementList.h"
 #include "ScoreTable.h"
+#include "EventQueue.h"
 #include "Button.h"
 #include "TextField.h"
 
@@ -43,6 +44,15 @@ private:
     MovementList movementList;
     ScoreTable scoreTable;
 
+    // Cola de Eventos Programados
+    EventQueue eventQueue;
+    sf::Clock deltaClock;
+    float gameTime;           // Reloj de tiempo total transcurrido en la partida
+    int scoreMultiplier;          // Multiplicador de puntos (1x o 2x)
+    float doubleScoreEndTime;      // Momento en que termina el efecto de puntos x2
+    std::string bannerMessage;    // Mensaje en pantalla del ultimo evento disparado
+    float bannerMessageEndTime;
+
     Piece currentPiece;
     int currentScore;
 
@@ -72,6 +82,7 @@ private:
     void useHold();
     void addScoreForLines(int linesCleared);
     void handleGameOver();
+    void initScheduledEvents();  // Carga los 3 tipos de eventos programados
 
     GameSnapshot createSnapshot() const;
     void restoreSnapshot(const GameSnapshot& snapshot);
